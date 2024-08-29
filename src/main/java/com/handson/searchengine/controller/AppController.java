@@ -2,8 +2,7 @@ package com.handson.searchengine.controller;
 
 
 import com.handson.searchengine.crawler.Crawler;
-import com.handson.searchengine.kafka.Producer;
-import com.handson.searchengine.model.CrawlStatus;
+import com.handson.searchengine.sqs.SqsProducer;
 import com.handson.searchengine.model.CrawlStatusOut;
 import com.handson.searchengine.model.CrawlerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.Random;
 @RequestMapping("/api")
 public class AppController {
     @Autowired
-    Producer producer;
+    SqsProducer producer;
     private static final int ID_LENGTH = 6;
     private Random random = new Random();
     @Autowired

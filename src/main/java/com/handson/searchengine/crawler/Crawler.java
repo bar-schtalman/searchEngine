@@ -2,7 +2,7 @@ package com.handson.searchengine.crawler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.handson.searchengine.kafka.Producer;
+import com.handson.searchengine.sqs.SqsProducer;
 import com.handson.searchengine.model.*;
 import com.handson.searchengine.util.ElasticSearch;
 import org.apache.commons.logging.Log;
@@ -14,12 +14,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,7 +27,7 @@ public class Crawler {
     ObjectMapper om;
 
     @Autowired
-    Producer producer;
+    SqsProducer producer;
 
     @Autowired
     ElasticSearch elasticSearch;
